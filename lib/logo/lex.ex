@@ -7,7 +7,7 @@ defmodule Logo.Lex do
   end
 
   @tokens [
-    command: ~w(fd bk lt rt repeat pu pd setx sety setxy print sc)a,
+    command: ~w(fd bk lt rt repeat pu pd setx sety setxy make print sc)a,
     operator: ~w(+ - * /)a
   ]
 
