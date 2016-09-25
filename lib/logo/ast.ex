@@ -22,8 +22,8 @@ defmodule Logo.AST do
     do_number_expr_ast(tokens, [], [])
   end
 
-  defp do_number_expr_ast([{:number_expr_group, number_expr_group} | rest], state, cache) do
-    do_number_expr_ast([{:number_expr_ast, do_number_expr_ast(number_expr_group, [], [])} | rest], state, cache)
+  defp do_number_expr_ast([{:group, group} | rest], state, cache) do
+    do_number_expr_ast([{:number_expr_ast, do_number_expr_ast(group, [], [])} | rest], state, cache)
   end
 
   defp do_number_expr_ast([{operand_type, _operand} = a, {:operator, operator} = op | b], state, [])

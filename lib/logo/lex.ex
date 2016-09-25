@@ -20,8 +20,8 @@ defmodule Logo.Lex do
   end
 
   defp do_lex(["[" | rest], state) do
-    {group_state, rest} = do_lex(rest, [])
-    do_lex(rest, [{:group, group_state} | state])
+    {list, rest} = do_lex(rest, [])
+    do_lex(rest, [{:list, list} | state])
   end
 
   defp do_lex(["]" | rest], state) do
@@ -29,8 +29,8 @@ defmodule Logo.Lex do
   end
 
   defp do_lex(["(" | rest], state) do
-    {number_expr_group, rest} = do_lex(rest, [])
-    do_lex(rest, [{:number_expr_group, number_expr_group} | state])
+    {group, rest} = do_lex(rest, [])
+    do_lex(rest, [{:group, group} | state])
   end
 
   defp do_lex([")" | rest], state) do
