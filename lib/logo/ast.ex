@@ -6,6 +6,12 @@ defmodule Logo.AST do
   defp command_ast([]), do: []
 
   defp command_ast([{:command, command} | rest])
+    when command in [:pu, :pd, :sc]
+  do
+    [{{:command, command}, []} | command_ast(rest)]
+  end
+
+  defp command_ast([{:command, command} | rest])
     when command in [:fd, :bk, :lt, :rt, :setx, :sety]
   do
     {num_expr_arg, rest} = number_expr_ast(rest)
