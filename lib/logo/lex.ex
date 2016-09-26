@@ -43,7 +43,7 @@ defmodule Logo.Lex do
         other =~ ~r/^\d+$/ ->
           {number, _} = Integer.parse(other)
           {:number, number}
-        String.starts_with?(other, "\"") ->
+        String.starts_with?(other, [~s/"/, ~s/'/]) ->
           "\"" <> string = other
           {:string, string}
         String.starts_with?(other, ":") ->
